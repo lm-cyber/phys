@@ -132,36 +132,3 @@ public class ShadowCasting {
 /**
  * Ray information class to store relevant data about rays and any intersection found specific to shadow casting.
  */
-class RayAngleInformation {
-    private final Ray RAY;
-    private final double ANGLE;
-
-    /**
-     * Constructor to store ray information.
-     *
-     * @param ray   Ray of intersection.
-     * @param angle Angle the ray is set to.
-     */
-    public RayAngleInformation(Ray ray, double angle) {
-        this.RAY = ray;
-        this.ANGLE = angle;
-    }
-
-    /**
-     * Getter for RAY.
-     *
-     * @return returns RAY.
-     */
-    public Ray getRAY() {
-        return RAY;
-    }
-
-    /**
-     * Getter for ANGLE.
-     *
-     * @return returns ANGLE.
-     */
-    public double getANGLE() {
-        return ANGLE;
-    }
-}

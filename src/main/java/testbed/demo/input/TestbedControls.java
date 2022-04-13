@@ -73,7 +73,8 @@ public abstract class TestbedControls {
                 TESTBED.setCurrentDemo(10);
             }
             case "Wrecking ball" -> {
-                WreckingBall.load(TESTBED);
+                WreckingBall.text= new String[]{"Wrecking ball"};
+                WreckingBall.load(TESTBED,9.81);
                 TESTBED.setCurrentDemo(11);
             }
             case "Friction" -> {
@@ -91,6 +92,21 @@ public abstract class TestbedControls {
             case "Stacked objects" -> {
                 StackedObjects.load(TESTBED);
                 TESTBED.setCurrentDemo(15);
+            }
+            case "Ball" -> {
+                Ball.text= new String[]{"Ball"};
+                Ball.load(TESTBED,9.81);
+                TESTBED.setCurrentDemo(16);
+            }
+            case "Wrecking ball Marc" -> {
+                WreckingBall.text= new String[]{"Wrecking ball Marc"};
+                WreckingBall.load(TESTBED, 3.72);
+                TESTBED.setCurrentDemo(17);
+            }
+            case "Ball Marc" -> {
+                Ball.text= new String[]{"Ball Marc"};
+                Ball.load(TESTBED,3.72);
+                TESTBED.setCurrentDemo(18);
             }
         }
     }

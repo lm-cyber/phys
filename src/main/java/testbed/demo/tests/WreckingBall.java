@@ -10,10 +10,10 @@ import library.math.Vectors2D;
 import testbed.demo.TestBedWindow;
 
 public class WreckingBall {
-    public static final String[] text = {"Wrecking Ball"};
+    public static  String[] text = {"Wrecking Ball"};
 
-    public static void load(TestBedWindow testBedWindow) {
-        testBedWindow.setWorld(new World(new Vectors2D(0, -9.81)));
+    public static void load(TestBedWindow testBedWindow,Double g) {
+        testBedWindow.setWorld(new World(new Vectors2D(0, -g)));
         World temp = testBedWindow.getWorld();
         testBedWindow.setCamera(new Vectors2D(0, 100), 1.7);
 

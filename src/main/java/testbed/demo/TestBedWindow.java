@@ -1,27 +1,31 @@
 package testbed.demo;
 
 import library.collision.AABB;
-import library.dynamics.*;
+import library.dynamics.Body;
+import library.dynamics.Settings;
+import library.dynamics.World;
 import library.explosions.Explosion;
 import library.explosions.ParticleExplosion;
 import library.geometry.Circle;
 import library.geometry.Polygon;
 import library.joints.Joint;
+import library.math.Vectors2D;
 import library.rays.Ray;
 import library.rays.ShadowCasting;
 import library.rays.Slice;
-import library.dynamics.Settings;
-import testbed.ColourSettings;
-import library.math.Vectors2D;
 import testbed.Camera;
+import testbed.ColourSettings;
 import testbed.DemoText;
 import testbed.Trail;
 import testbed.demo.input.*;
-import testbed.demo.tests.*;
+import testbed.demo.tests.Chains;
+import testbed.demo.tests.Raycast;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseMotionListener;
 import java.awt.geom.Line2D;
 import java.awt.geom.Path2D;
 import java.util.ArrayList;
@@ -208,12 +212,13 @@ public class TestBedWindow extends JPanel implements Runnable {
         }
     }
 
-    private void update() {
+    private double update() {
         double dt = Settings.HERTZ > 0.0 ? 1.0 / Settings.HERTZ : 0.0;
         world.step(dt);
         updateTrails();
         updateRays();
         checkParticleLifetime(dt);
+        return dt;
     }
 
     private void checkParticleLifetime(double timePassed) {
@@ -284,7 +289,7 @@ public class TestBedWindow extends JPanel implements Runnable {
             g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         }
         setBackground(PAINT_SETTINGS.background);
-        update();
+        double dt = update();
         if (followPayload){
             setCamera(new Vectors2D(world.bodies.get(3).position.x,getCamera().centre.y) , 2.0);
         }
@@ -323,7 +328,7 @@ public class TestBedWindow extends JPanel implements Runnable {
         for (Slice s : slices) {
             s.draw(g2d, PAINT_SETTINGS, CAMERA);
         }
-        DemoText.draw(g2d, PAINT_SETTINGS, currentDemo);
+        DemoText.draw(g2d, PAINT_SETTINGS, currentDemo,dt);
     }
 
     private void drawGridMethod(Graphics2D g2d) {
@@ -388,11 +393,15 @@ public class TestBedWindow extends JPanel implements Runnable {
             gameScreen.setOpaque(true);
             gameScreen.setBackground(gameScreen.PAINT_SETTINGS.background);
 
+
             JMenuBar menuBar = new JMenuBar();
+
+            menuBar.add(createTestNewMenu(gameScreen));
             menuBar.add(createTestMenu(gameScreen));
             menuBar.add(createColourSchemeMenu(gameScreen));
             menuBar.add(createFrequencyMenu(gameScreen));
             menuBar.add(createDisplayMenu(gameScreen));
+
             window.setJMenuBar(menuBar);
 
             window.setVisible(true);
@@ -464,6 +473,34 @@ public class TestBedWindow extends JPanel implements Runnable {
 
         return colourScheme;
     }
+    private static JMenu createTestNewMenu(TestBedWindow gameScreen) {
+        JMenu testMenu = new JMenu("New Demos");
+        testMenu.setMnemonic(KeyEvent.VK_M);
+
+        JMenuItem wreckingBall = new JMenuItem("Wrecking ball");
+        wreckingBall.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, InputEvent.ALT_DOWN_MASK));
+        testMenu.add(wreckingBall);
+        wreckingBall.addActionListener(new KeyBoardInput(gameScreen));
+
+        JMenuItem wreckingBallMarc = new JMenuItem("Wrecking ball Marc");
+        wreckingBallMarc.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, InputEvent.ALT_DOWN_MASK));
+        testMenu.add(wreckingBallMarc);
+        wreckingBallMarc.addActionListener(new KeyBoardInput(gameScreen));
+
+        JMenuItem ball = new JMenuItem("Ball");
+        ball.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, InputEvent.ALT_DOWN_MASK));
+        testMenu.add(ball);
+        ball.addActionListener(new KeyBoardInput(gameScreen));
+
+        JMenuItem ballMarc = new JMenuItem("Ball Marc");
+        ballMarc.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, InputEvent.ALT_DOWN_MASK));
+        testMenu.add(ballMarc);
+        ballMarc.addActionListener(new KeyBoardInput(gameScreen));
+
+
+        return testMenu;
+    }
+
 
     private static JMenu createTestMenu(TestBedWindow gameScreen) {
         JMenu testMenu = new JMenu("Demos");
