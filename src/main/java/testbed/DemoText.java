@@ -6,6 +6,7 @@ import testbed.demo.tests.*;
 import java.awt.*;
 
 public class DemoText {
+    public static Double time=0D;
     public static void draw(Graphics2D g, ColourSettings paintSettings, int demo, double dt) {
         if (!paintSettings.getDrawText()) {
             return;
@@ -29,15 +30,15 @@ public class DemoText {
             case 13 -> drawArray(Drag.text, g);
             case 14 -> drawArray(Restitution.text, g);
             case 15 -> drawArray(StackedObjects.text, g);
-            case 16 -> drawArray(Ball.text,g);
-            case 17 -> drawArray(WreckingBall.text,g);
-            case 18 -> drawArray(Ball.text,g,dt);
+            case 16 -> drawArray(Ball.text,g,dt);
         }
     }
 
-    public static void drawArray(String[] lines, Graphics2D g, Double dt) {
+    public static void drawArray(String[] lines, Graphics2D g, double dt) {
         drawArray(lines,g);
-        g.drawString("time" + dt.toString(),5,120);
+        time+=dt;
+
+        g.drawString("Time: " + time.toString(),5,120);
     }
     public static void drawArray(String[] lines, Graphics2D g) {
         int y = 20;

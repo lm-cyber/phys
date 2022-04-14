@@ -101,12 +101,12 @@ public abstract class TestbedControls {
             case "Wrecking ball Marc" -> {
                 WreckingBall.text= new String[]{"Wrecking ball Marc"};
                 WreckingBall.load(TESTBED, 3.72);
-                TESTBED.setCurrentDemo(17);
+                TESTBED.setCurrentDemo(15);
             }
             case "Ball Marc" -> {
                 Ball.text= new String[]{"Ball Marc"};
                 Ball.load(TESTBED,3.72);
-                TESTBED.setCurrentDemo(18);
+                TESTBED.setCurrentDemo(16);
             }
         }
     }

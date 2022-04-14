@@ -2,6 +2,7 @@ package testbed.demo.input;
 
 import library.dynamics.Settings;
 import testbed.ColourSettings;
+import testbed.DemoText;
 import testbed.demo.TestBedWindow;
 import testbed.demo.tests.Trebuchet;
 
@@ -34,6 +35,7 @@ public class KeyBoardInput extends TestbedControls implements KeyListener, Actio
                 Settings.HERTZ = 60;
             }
         } else if (e.getKeyCode() == KeyEvent.VK_R) {
+            DemoText.time = 0D;
             loadDemo(currentDemo);
         }
     }
