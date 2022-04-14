@@ -14,23 +14,23 @@ public class DemoText {
         g.setColor(Color.white);
         g.setFont(new Font("Calibri", Font.PLAIN, 20));
         switch (demo) {
-            case 0 -> drawArray(Chains.text, g);
-            case 1 -> drawArray(LineOfSight.text, g);
-            case 2 -> drawArray(ParticleExplosionTest.text, g);
-            case 3 -> drawArray(ProximityExplosionTest.text, g);
-            case 4 -> drawArray(RaycastExplosionTest.text, g);
-            case 5 -> drawArray(Raycast.text, g);
-            case 6 -> drawArray(Trebuchet.text, g);
-            case 7 -> drawArray(SliceObjects.text, g);
-            case 8 -> drawArray(BouncingBall.text, g);
-            case 9 -> drawArray(MixedShapes.text, g);
-            case 10 -> drawArray(NewtonsCradle.text, g);
-            case 11 -> drawArray(WreckingBall.text, g);
-            case 12 -> drawArray(Friction.text, g);
-            case 13 -> drawArray(Drag.text, g);
-            case 14 -> drawArray(Restitution.text, g);
-            case 15 -> drawArray(StackedObjects.text, g);
-            case 16 -> drawArray(Ball.text,g,dt);
+            case 0 -> drawArray(Chains.text, g, dt);
+            case 1 -> drawArray(LineOfSight.text, g, dt);
+            case 2 -> drawArray(ParticleExplosionTest.text, g, dt);
+            case 3 -> drawArray(ProximityExplosionTest.text, g, dt);
+            case 4 -> drawArray(RaycastExplosionTest.text, g, dt);
+            case 5 -> drawArray(Raycast.text, g, dt);
+            case 6 -> drawArray(Trebuchet.text, g, dt);
+            case 7 -> drawArray(SliceObjects.text, g, dt);
+            case 8 -> drawArray(BouncingBall.text, g, dt);
+            case 9 -> drawArray(MixedShapes.text, g, dt);
+            case 10 -> drawArray(NewtonsCradle.text, g, dt);
+            case 11 -> drawArray(WreckingBall.text, g, dt);
+            case 12 -> drawArray(Friction.text, g, dt);
+            case 13 -> drawArray(Drag.text, g, dt);
+            case 14 -> drawArray(Restitution.text, g, dt);
+            case 15 -> drawArray(StackedObjects.text, g, dt);
+            case 16 -> drawArray(Ball.text, g, dt);
         }
     }
 
