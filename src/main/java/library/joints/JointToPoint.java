@@ -77,7 +77,7 @@ public class JointToPoint extends Joint {
         double extensionRatio = distance - naturalLength;
         double tensionDueToHooksLaw = extensionRatio * springConstant;
         double tensionDueToMotionDamping = dampeningConstant * rateOfChangeOfExtension();
-        return tensionDueToHooksLaw + tensionDueToMotionDamping;
+        return tensionDueToHooksLaw   + tensionDueToMotionDamping;
     }
 
     /**

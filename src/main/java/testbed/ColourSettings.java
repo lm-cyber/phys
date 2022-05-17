@@ -8,10 +8,10 @@ public class ColourSettings {
     }
 
     public void defaultColourScheme() {
-        background = new Color(8, 20, 30, 255);
-        shapeFill = new Color(97, 146, 58, 255);
-        shapeOutLine = new Color(201, 206, 167, 255);
-        staticFill = new Color(97, 60, 60 ,255);
+        background = new Color(0, 0, 255, 255);
+        shapeFill = new Color(255, 0, 0, 255);
+        shapeOutLine = new Color(50, 50, 255, 255);
+        staticFill = new Color(255, 255, 255 ,255);
         staticOutLine = new Color(42, 28, 30, 255);
 
         aabb = new Color(0,255,255, 255);
