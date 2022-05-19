@@ -8,24 +8,26 @@ public class ColourSettings {
     }
 
     public void defaultColourScheme() {
-        background = new Color(0, 0, 255, 255);
-        shapeFill = new Color(255, 0, 0, 255);
-        shapeOutLine = new Color(50, 50, 255, 255);
-        staticFill = new Color(255, 255, 255 ,255);
-        staticOutLine = new Color(42, 28, 30, 255);
+         background = new Color(0, 0, 0, 255);
+        shapeFill = new Color(0, 0, 0, 255);
+        shapeOutLine = new Color(255, 255, 255, 255);
+        staticFill = shapeFill;
+        staticOutLine = shapeOutLine;
 
-        aabb = new Color(0,255,255, 255);
-        joints = new Color(0,255,255, 255);
+        aabb = new Color(255, 255, 255, 255);
+        joints = new Color(255, 255, 255, 255);
 
-        contactPoint = new Color(255, 255,255, 255);
-        centreOfMass = new Color(8, 20, 30, 255);
-        trail = new Color(255, 255, 0, 200);
+        contactPoint = new Color(255, 255, 255, 255);
+        centreOfMass = new Color(255, 255, 255, 255);
+        trail = new Color(255, 255, 255, 255);
 
-        proximity = new Color(255, 255, 0, 200);
-        linesToObjects = new Color(255, 255, 0, 180);
-        rayToBody = new Color(255, 255, 0, 255);
+        proximity = new Color(255, 255, 255, 255);
+        linesToObjects = new Color(255, 255, 255, 255);
+        rayToBody = new Color(255, 255, 255, 255);
         projectedRay = new Color(127,127, 127, 100);
-        scatterRays = new Color(255, 255, 0, 255);
+        scatterRays = new Color(255, 255, 255, 255);
+
+
     }
 
     public void box2dColourScheme() {
@@ -50,24 +52,25 @@ public class ColourSettings {
     }
 
     public void monochromaticColourScheme() {
-        background = new Color(0, 0, 0, 255);
-        shapeFill = new Color(0, 0, 0, 255);
-        shapeOutLine = new Color(255, 255, 255, 255);
-        staticFill = shapeFill;
-        staticOutLine = shapeOutLine;
+        background = new Color(0, 0, 255, 255);
+        shapeFill = new Color(255, 0, 0, 255);
+        shapeOutLine = new Color(50, 50, 255, 255);
+        staticFill = new Color(255, 255, 255 ,255);
+        staticOutLine = new Color(42, 28, 30, 255);
 
-        aabb = new Color(255, 255, 255, 255);
-        joints = new Color(255, 255, 255, 255);
+        aabb = new Color(0,255,255, 255);
+        joints = new Color(0,255,255, 255);
 
-        contactPoint = new Color(255, 255, 255, 255);
-        centreOfMass = new Color(255, 255, 255, 255);
-        trail = new Color(255, 255, 255, 255);
+        contactPoint = new Color(255, 255,255, 255);
+        centreOfMass = new Color(8, 20, 30, 255);
+        trail = new Color(255, 255, 0, 200);
 
-        proximity = new Color(255, 255, 255, 255);
-        linesToObjects = new Color(255, 255, 255, 255);
-        rayToBody = new Color(255, 255, 255, 255);
+        proximity = new Color(255, 255, 0, 200);
+        linesToObjects = new Color(255, 255, 0, 180);
+        rayToBody = new Color(255, 255, 0, 255);
         projectedRay = new Color(127,127, 127, 100);
-        scatterRays = new Color(255, 255, 255, 255);
+        scatterRays = new Color(255, 255, 0, 255);
+
     }
 
     //All objects
