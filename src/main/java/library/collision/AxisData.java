@@ -1,5 +1,8 @@
 package library.collision;
 
+/**
+ * Class for data related to axis
+ */
 class AxisData {
     private double penetration;
     private int referenceFaceIndex;
@@ -23,7 +26,7 @@ class AxisData {
 
     /**
      * Sets the reference face index variable to an int value.
-     *
+     * * Устанавливает переменную индекса ссылочной грани в значение int.
      * @param value Value to set index variable to.
      */
     public void setReferenceFaceIndex(int value) {

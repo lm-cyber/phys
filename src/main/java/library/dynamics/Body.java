@@ -108,7 +108,7 @@ public class Body {
 
     /**
      * Sets the orientation of the body's shape associated with it and recalculates AABB.
-     *
+     * Задает ориентацию связанной с ним формы тела и пересчитывает AABB.
      * @param delta Angle of orientation.
      */
     public void setOrientation(double delta) {
@@ -119,7 +119,7 @@ public class Body {
 
     /**
      * Sets the density of the body's mass.
-     *
+     * Задает плотность массы тела.
      * @param density double value of desired density.
      */
     public void setDensity(double density) {
@@ -132,6 +132,7 @@ public class Body {
 
     /**
      * Sets all mass and inertia variables to zero. Object cannot be moved.
+     Устанавливает все переменные массы и инерции равными нулю. Объект не может быть перемещен.
      */
     private void setStatic() {
         mass = 0.0;

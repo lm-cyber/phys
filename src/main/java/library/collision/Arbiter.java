@@ -9,6 +9,7 @@ import library.math.Vectors2D;
 
 /**
  * Creates manifolds to detect collisions and apply forces to them. Discrete in nature and only evaluates pairs of bodies in a single manifold.
+ * Создает коллекторы для обнаружения столкновений и приложения к ним сил. Дискретный по своей природе и оценивает только пары тел в одном многообразии.
  */
 public class Arbiter {
     private final Body A;
@@ -34,10 +35,12 @@ public class Arbiter {
 
     /**
      * Static fiction constant to be set during the construction of the arbiter.
+     * Статическая фиктивная константа, которая должна быть установлена во время построения арбитра.
      */
     double staticFriction;
     /**
      * Dynamic fiction constant to be set during the construction of the arbiter.
+     * Динамическая фиктивная константа, которая должна быть установлена во время построения арбитра.
      */
     double dynamicFriction;
 
@@ -58,9 +61,11 @@ public class Arbiter {
     /**
      * Method to check if point is inside a body in world space.
      *
+     * * Метод проверки того, находится ли точка внутри тела в мировом пространстве.
      * @param b          Body to check against.
      * @param startPoint Vector point to check if its inside the first body.
      * @return boolean value whether the point is inside the first body.
+     * логическое значение, независимо от того, находится ли точка внутри первого тела.
      */
     public static boolean isPointInside(Body b, Vectors2D startPoint) {
         if (b.shape instanceof Polygon) {
@@ -83,6 +88,7 @@ public class Arbiter {
 
     /**
      * Array to save the contact points of the objects body's in world space.
+     * Массив для сохранения точек соприкосновения тел объектов в мировом пространстве.
      */
     public final Vectors2D[] contacts = {new Vectors2D(), new Vectors2D()};
     public Vectors2D contactNormal = new Vectors2D();
@@ -91,6 +97,7 @@ public class Arbiter {
 
     /**
      * Conducts a narrow phase detection and creates a contact manifold.
+     * Проводит узкое определение фазы и создает контактный коллектор.
      */
     public void narrowPhase() {
         restitution = Math.min(A.restitution, B.restitution);
@@ -112,6 +119,7 @@ public class Arbiter {
 
     /**
      * Circle vs circle collision detection method
+     * Метод обнаружения столкновения круга с кругом
      */
     private void circleVsCircle() {
         Circle ca = (Circle) A.shape;
@@ -143,6 +151,7 @@ public class Arbiter {
     /**
      * Circle vs Polygon collision detection method
      *
+     * Метод обнаружения столкновений круга и полигона
      * @param a Circle object
      * @param b Polygon Object
      */
@@ -232,6 +241,7 @@ public class Arbiter {
 
     /**
      * Polygon collision check
+     * Проверка столкновения полигонов
      */
     private void polygonVsPolygon() {
         Polygon pa = (Polygon) A.shape;
@@ -348,7 +358,7 @@ public class Arbiter {
 
     /**
      * Clipping for polygon collisions. Clips incident face against side planes of the reference face.
-     *
+     *  Отсечение для столкновений полигонов. Прижимает падающую грань к боковым плоскостям опорной грани.
      * @param planeTangent Plane to clip against
      * @param offset       Offset for clipping in world space to incident face.
      * @param incidentFace Clipped face vertex's
@@ -381,7 +391,7 @@ public class Arbiter {
 
     /**
      * Finds the incident face of polygon A in object space relative to polygons B position.
-     *
+     * Находит падающую грань многоугольника A в пространстве объектов относительно положения полигонов B.
      * @param data Data obtained from earlier penetration test.
      * @param A    Polygon A to test.
      * @param B    Polygon B to test.
@@ -434,6 +444,8 @@ public class Arbiter {
     /**
      * Resolves any penetrations that are left overlapping between shapes. This can be cause due to integration errors of the solvers integration method.
      * Based on linear projection to move the shapes away from each other based on a correction constant and scaled relative to the inverse mass of the objects.
+     * Устраняет любые проникновения, которые остаются перекрывающимися между фигурами. Это может быть вызвано ошибками интегрирования метода интегрирования решателей.
+     * На основе линейной проекции для удаления фигур друг от друга на основе константы коррекции и масштабирования относительно обратной массы объектов.
      */
     public void penetrationResolution() {
         double penetrationTolerance = penetration - Settings.PENETRATION_ALLOWANCE;
@@ -450,6 +462,7 @@ public class Arbiter {
 
     /**
      * Solves the current contact manifold and applies impulses based on any contacts found.
+     * Решает проблему с текущим контактным коллектором и применяет импульсы на основе любых найденных контактов.
      */
     public void solve() {
         Vectors2D contactA = contacts[0].subtract(A.position);
@@ -500,7 +513,8 @@ public class Arbiter {
     /**
      * Selects one value over another. Intended for polygon collisions to aid in choosing which axis of separation intersects the other in a consistent manner.
      * Floating point error can occur in the rotation calculations thus this method helps with choosing one axis over another in a consistent manner for stability.
-     *
+     * Выбирает одно значение поверх другого. Предназначен для многоугольных столкновений, чтобы помочь в выборе, какая ось разделения последовательно пересекает другую.
+     * При вычислениях вращения может возникнуть ошибка с плавающей запятой, поэтому этот метод помогает последовательно выбирать одну ось вместо другой для обеспечения стабильности.
      * @param a penetration value a
      * @param b penetration value b
      * @return boolean value whether a is to be preferred or not.
@@ -510,6 +524,3 @@ public class Arbiter {
     }
 }
 
-/**
- * Class for data related to axis
- */

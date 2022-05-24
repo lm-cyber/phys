@@ -219,6 +219,8 @@ public class World {
      * If broad phase detection check passes, a narrow phase check is conducted to determine for certain if two objects are intersecting.
      * If two objects are, arbiters of contacts found are generated
      *
+     * Если проверка обнаружения широкой фазы проходит, проводится проверка узкой фазы, чтобы наверняка определить, пересекаются ли два объекта.
+     * Если есть два объекта, генерируются арбитры найденных контактов
      * @param a
      * @param b
      */
